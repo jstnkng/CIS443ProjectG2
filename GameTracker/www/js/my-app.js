@@ -29,3 +29,12 @@ myApp.onPageInit('about', function (page) {
 
 
 // Option 2. Using live 'pageInit' event handlers for each page
+
+//Initialize Fire Base
+var config = {
+  apiKey: "AIzaSyC798O1WFwkHwDFG4f4AfwUUNyQ-h_IX0s",
+  authDomain: "gametrack-dc695.firebaseapp.com",
+  databaseURL: "https://gametrack-dc695.firebaseio.com",
+  storageBucket: "gametrack-dc695.appspot.com",
+};
+firebase.initializeApp(config);
