@@ -71,6 +71,45 @@
                     <!-- Scrollable page content -->
                     <div class="page-content" style="background-color:#000000">
                         <div class="content-block" style="text-align: center">
+                                <div class="h5" style="margin-top:20px; color: #00adee">Add New Game</div>
+                                <div style="border-bottom: 1px solid #00adee;width: 100%;display: block; margin-bottom: 4px;"></div>
+
+                            <form action="" class=text-center style="width:80%; margin-left: auto; margin-right: auto;">
+                                    <div class="row">
+                                        <div class="col-8 padding-0">
+                                                    <input class= "form-control" style="margin-bottom:5px;" type="text" name="Game Title" placeholder="Game Title">
+                                        </div>
+                                        <div class="col-4 padding-0">
+                                                    <input  class= "form-control" style="margin-bottom:5px;" type="text" name="Hours" placeholder="Hours">
+                                        </div>
+                                    </div> 
+                                    <br/>      
+                                    <input type="submit" value="Add Game" class="btn btn-primary">                                
+                            </form>
+                            
+                            <br/>
+
+                            <div class="h5" style="margin-top:20px; color: #00adee">Add Hours To Existing Game</div>
+                                <div style="border-bottom: 1px solid #00adee;width: 100%;display: block; margin-bottom: 4px;"></div>
+                            <table id="" class="table table-striped table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col" style="text-decoration:underline">Game Title</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="AddHourLink">
+                                      <tr>
+                                        <td><a href="#" style="color:white">World of Warcraft</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="#" style="color:white">Tom Clancy's Ghost Recon</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="#" style="color:white">Sid Meier's Civilization V</a></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
                         </div>
                     </div>
                 </div>
@@ -85,8 +124,6 @@
     </div>
 
     <script type="text/javascript" src="cordova.js"></script>
-    
-    
     <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
 </body>

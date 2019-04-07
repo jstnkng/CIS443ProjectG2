@@ -390,6 +390,11 @@ h6, .h6 {
   font-size: 1rem;
 }
 
+.padding-0{
+  padding-right:0;
+  padding-left:0;
+}
+
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
@@ -2374,6 +2379,8 @@ textarea.form-control {
     margin-bottom: 0;
   }
 }
+
+
 
 .btn {
   display: inline-block;
