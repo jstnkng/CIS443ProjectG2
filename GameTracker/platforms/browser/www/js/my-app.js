@@ -42,7 +42,7 @@ function getVal(id){
 }
 
 //document.getElementById('signUpForm').addEventListener('submit',signForm);
-document.getElementById('login').addEventListener('submit', signForm);
+document.getElementById('myBtn').addEventListener('click', signForm);
 
 function signForm(){
   
