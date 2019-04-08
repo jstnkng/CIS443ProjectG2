@@ -21,7 +21,8 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Your app title -->
-    <title>My App</title>
+     <title>GameTracker</title>
+	
 
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
@@ -30,7 +31,7 @@
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-    
+	
 </head>
 <body>
 <div class="navbar">
@@ -51,21 +52,24 @@
         <div data-page="about" class="page">
                 <div class="page-content" style="background-color:#000000">
                         <div class="content-block" style="text-align: center">
-                            <br/>
+                           <br/>
                             <img src="header_logo_black.png" style="margin-bottom:5px;">
-                            <form id="signup" class=text-center style="width:80%; margin-left: auto; margin-right: auto;">
-                                        <input class= "form-control" style="margin-bottom:5px;" type="text" name="username" placeholder="Username">
-                                        <input class= "form-control" style="margin-bottom:5px;" type="text" name="password" placeholder="Password">
-                                        <input class= "form-control" type="text" name="reenterPassword" placeholder="Confirm Password">
-                                        <br/>
-                                <input type="submit" value="Sign Up" class="btn btn-primary">
-                            </form>
-                            
-                           
+						
+							<form id ='signupform' class=text-center style="width:80%; margin-left: auto; margin-right: auto;">
+                                <input id='email' class= "form-control" style="margin-bottom:5px;" type="text" name="email" placeholder="email">
+                                <input id='pass' class= "form-control" style="margin-bottom:5px;" type="text" name="password" placeholder="Password">
+                                <input id = 'confirm' class= "form-control" type="text" name="reenterPassword" placeholder="Confirm Password">
+                                <br/>	
+								<input type="submit" value="Sign Up" class="btn btn-primary">
+							</form>
+						
                         </div>
                     </div>
         </div>
     </div>
-    <script type="text/javascript" src="cordova.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
 </body>
 </html>

@@ -42,7 +42,13 @@
     <!-- Left panel with reveal effect-->
     <div class="panel panel-left panel-reveal">
         <div class="content-block">
-            <p>Left panel content goes here</p>
+            <a class="h4" href="ProfilePage.html" style="color:#00adee; text-decoration: underline;">Profile</a>
+            <br/>
+            <br/>
+            <a class="h4" href="AddGamesPage.html" style="color:#00adee; text-decoration: underline;">Add Game</a>
+            <br/>
+            <br/>
+            <a class="h4" href="about.html" style="color:#00adee; text-decoration: underline;">About</a>
         </div>
     </div>
 
@@ -73,7 +79,42 @@
                     <!-- Scrollable page content -->
                     <div class="page-content" style="background-color:#000000">
                         <div class="content-block" style="text-align: center">
-                            <div class="h4">Welcome User!</div>
+                            <div id="WelcomeHeader"class="h4" style="text-decoration: underline;">Welcome User!</div>
+                            
+                              
+                            <div class="h5" style="margin-top:20px; color: #00adee">Games You Have Played</div>
+                            <div style="border-bottom: 1px solid #00adee;width: 100%;display: block; margin-bottom: 4px;"></div>
+                            <table id="" class="table table-striped table-dark">
+                                <thead>
+                                  <tr>
+                                    <th scope="col" style="text-align: left;">Game Title</th>
+                                    <th scope="col" style="text-align: right;">Hours</th>
+                                    <th scope="col" style="text-align: right;">Points</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td style="text-align: left;">World of Warcraft</td>
+                                    <td style="text-align: right;">10</td>
+                                    <td style="text-align: right;">5</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: left;">Tom Clancy's Ghost Recon</td>
+                                    <td style="text-align: right;">40</td>
+                                    <td style="text-align: right;">20</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: left;">Sid Meier's Civilization V</td>
+                                    <td style="text-align: right;">35</td>
+                                    <td style="text-align: right;">17.5</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: left; font-weight: bold;">Total</td>
+                                    <td style="text-align: right;font-weight: bold;">###</td>
+                                    <td style="text-align: right;font-weight: bold;">###</td>
+                                  </tr>
+                                </tbody>
+                              </table>
                             <!-- Link to another page -->
                         </div>
                     </div>
@@ -94,11 +135,6 @@
     <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     
-    <script>
-            function foo() {
-                window.location.href = "about.html";
-            }
-    </script>
 </body>
 
 </html>
