@@ -27,10 +27,7 @@
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
      -->
 
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+    
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -89,10 +86,24 @@
     </div>
 
     <script type="text/javascript" src="cordova.js"></script>
-    
-    
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>    
     <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
+    <script>
+            var config = {
+            apiKey: "AIzaSyC798O1WFwkHwDFG4f4AfwUUNyQ-h_IX0s",
+            authDomain: "gametrack-dc695.firebaseapp.com",
+            databaseURL: "https://gametrack-dc695.firebaseio.com",
+            projectId: "gametrack-dc695",
+            storageBucket: "gametrack-dc695.appspot.com",
+            messagingSenderId: "1095071838360"
+            };
+    
+            firebase.initializeApp(config);
+        </script>
 </body>
 
 </html>

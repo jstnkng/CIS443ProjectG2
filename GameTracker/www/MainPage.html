@@ -10,7 +10,8 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta http-equiv="Content-Security-Policy" content="default-src gap://ready file://* *; style-src 'self' http://* https://* 'unsafe-inline'; script-src 'self' http://* https://* 'unsafe-inline' 'unsafe-eval'">
+
 
     <!-- Required meta tags-->
     <meta charset="utf-8">
@@ -130,10 +131,25 @@
     </div>
 
     <script type="text/javascript" src="cordova.js"></script>
-    
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
     
     <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
+    <script>
+        var config = {
+        apiKey: "AIzaSyC798O1WFwkHwDFG4f4AfwUUNyQ-h_IX0s",
+        authDomain: "gametrack-dc695.firebaseapp.com",
+        databaseURL: "https://gametrack-dc695.firebaseio.com",
+        projectId: "gametrack-dc695",
+        storageBucket: "gametrack-dc695.appspot.com",
+        messagingSenderId: "1095071838360"
+        };
+
+        firebase.initializeApp(config);
+    </script>
     
 </body>
 
