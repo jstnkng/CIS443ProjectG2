@@ -40,7 +40,8 @@ var config = {
   storageBucket: "gametrack-dc695.appspot.com",
   messagingSenderId: "1095071838360"
 };
-firebase.initializeApp(config);
+
+
 
 
 
@@ -48,10 +49,10 @@ function getval(id){
     return document.getElementById(id).value;
 }
 
-document.getElementById('signupform').addEventListener('submit',signForm);
+document.getElementById('signup').addEventListener('submit',signForm);
 
 function signForm(){
-
+  firebase.initializeApp(config);
   var email = getVal('email');
   var pass = getVal('confirm');
 
@@ -68,6 +69,7 @@ function signForm(){
 document.getElementById('login').addEventListener('submit', loginForm);
 
 function loginForm(){
+  firebase.initializeApp(config);
   var email = getVal('email');
   var password = getVal('pass');
 

@@ -40,7 +40,8 @@ var config = {
   storageBucket: "gametrack-dc695.appspot.com",
   messagingSenderId: "1095071838360"
 };
-firebase.initializeApp(config);
+
+
 
 
 
@@ -48,13 +49,12 @@ function getval(id){
     return document.getElementById(id).value;
 }
 
-document.getElementById('signupform').addEventListener('submit',signForm);
+document.getElementById('signup').addEventListener('submit',signForm);
 
-function signForm(e){
-  e.preventDefault();
-
+function signForm(){
+  firebase.initializeApp(config);
   var email = getVal('email');
-  var pass = getVal('pass');
+  var pass = getVal('confirm');
 
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
     // Handle Errors here.
@@ -62,5 +62,22 @@ function signForm(e){
     var errorMessage = error.message;
     // ...
   })
+
+  
+}
+
+document.getElementById('login').addEventListener('submit', loginForm);
+
+function loginForm(){
+  firebase.initializeApp(config);
+  var email = getVal('email');
+  var password = getVal('pass');
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
 
 }
