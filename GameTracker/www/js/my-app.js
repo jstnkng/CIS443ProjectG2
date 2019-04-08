@@ -42,10 +42,40 @@ var config = {
 };
 firebase.initializeApp(config);
 
-firebase.auth().signInWithCustomToken(token).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-  console.log("You are signed in" + token)
-});
+
+
+function getval(id){
+    return document.getElementById(id).value;
+}
+
+document.getElementById('signupform').addEventListener('submit',signForm);
+
+function signForm(){
+
+  var email = getVal('email');
+  var pass = getVal('confirm');
+
+  firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  })
+
+  
+}
+
+document.getElementById('login').addEventListener('submit', loginForm);
+
+function loginForm(){
+  var email = getVal('email');
+  var password = getVal('pass');
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
+
+}
