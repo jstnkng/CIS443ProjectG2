@@ -42,25 +42,26 @@ function getVal(id){
 }
 
 //document.getElementById('signUpForm').addEventListener('submit',signForm);
+document.getElementById('login').addEventListener('submit', signForm);
 
 function signForm(){
   
   var email = getVal('email');
   var pass = getVal('pass');
-  console.log("HELLO People");
+  
 
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
     // Handle Errors here.
     var errorCode = error.code;
     
     var errorMessage = error.message;
-    console.log(errorMessage);
+    
   })
 
   
 } 
 
-document.getElementById('login').addEventListener('submit', signForm);
+
 
 function loginForm(){
   
