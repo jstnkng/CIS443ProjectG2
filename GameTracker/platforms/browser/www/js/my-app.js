@@ -32,30 +32,32 @@ myApp.onPageInit('about', function (page) {
 
 //Initialize Fire Base
 
-var config = {
-  apiKey: "AIzaSyC798O1WFwkHwDFG4f4AfwUUNyQ-h_IX0s",
-  authDomain: "gametrack-dc695.firebaseapp.com",
-  databaseURL: "https://gametrack-dc695.firebaseio.com",
-  projectId: "gametrack-dc695",
-  storageBucket: "gametrack-dc695.appspot.com",
-  messagingSenderId: "1095071838360"
-};
 
+<<<<<<< HEAD
 firebase.initializeApp(config);
 
 
 
+=======
+>>>>>>> 0610792ebea5114d8dcf51100525b0e1f66ebaac
 function getVal(id){
     return document.getElementById(id).value;
 }
 
+<<<<<<< HEAD
 //document.getElementById('signUpForm').addEventListener('submit',signForm);
+=======
+//document.getElementById('signup').addEventListener('submit',signForm);
+>>>>>>> 0610792ebea5114d8dcf51100525b0e1f66ebaac
 
 function signForm(){
   
   var email = getVal('email');
   var pass = getVal('pass');
+<<<<<<< HEAD
   console.log("HELLO People");
+=======
+>>>>>>> 0610792ebea5114d8dcf51100525b0e1f66ebaac
 
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
     // Handle Errors here.
@@ -83,3 +85,4 @@ function loginForm(){
   });
 
 }
+
