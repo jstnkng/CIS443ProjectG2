@@ -33,6 +33,8 @@ myApp.onPageInit('about', function (page) {
 //Initialize Fire Base
 
 
+
+
 function getVal(id){
     return document.getElementById(id).value;
 }
