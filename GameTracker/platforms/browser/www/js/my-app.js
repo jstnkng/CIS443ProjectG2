@@ -33,28 +33,47 @@ myApp.onPageInit('about', function (page) {
 //Initialize Fire Base
 
 
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+firebase.initializeApp(config);
+
+
+
+=======
+>>>>>>> 0610792ebea5114d8dcf51100525b0e1f66ebaac
+>>>>>>> 34abdaf134cdebea9bee091b72ea1a77d1969999
 function getVal(id){
     return document.getElementById(id).value;
 }
 
+<<<<<<< HEAD
+//document.getElementById('signUpForm').addEventListener('submit',signForm);
+=======
 //document.getElementById('signup').addEventListener('submit',signForm);
+>>>>>>> 0610792ebea5114d8dcf51100525b0e1f66ebaac
 
 function signForm(){
   
   var email = getVal('email');
   var pass = getVal('pass');
+<<<<<<< HEAD
+  console.log("HELLO People");
+=======
+>>>>>>> 0610792ebea5114d8dcf51100525b0e1f66ebaac
 
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
     // Handle Errors here.
     var errorCode = error.code;
+    
     var errorMessage = error.message;
-    // ...
+    console.log(errorMessage);
   })
 
   
-}
+} 
 
 document.getElementById('login').addEventListener('submit', signForm);
 
