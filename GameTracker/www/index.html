@@ -21,8 +21,8 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Your app title -->
-    <title>My App</title>
-
+    <title>GameTracker</title>
+	
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
      -->
@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     
+	
+
+	
 </head>
 
 <body style="background-color:powderblue;">
@@ -73,10 +76,11 @@
                         <div class="content-block" style="text-align: center">
                             <br/>
                             <img src="header_logo_black.png" style="margin-bottom:5px;">
-                            <form id ="login" class=text-center style="width:80%; margin-left: auto; margin-right: auto;">
-                                        <input class= "form-control" style="margin-bottom:5px;" type="text" name="username" placeholder="Username">
-                                        <input class= "form-control" type="text" name="password" placeholder="Password">
+                            <form id='login' class=text-center style="width:80%; margin-left: auto; margin-right: auto;">
+                                        <input id="email" class= "form-control" style="margin-bottom:5px;" type="text" name="email" placeholder="email">
+                                        <input id ="pass" class= "form-control" type="text" name="password" placeholder="Password">
                                         <br/>
+                            
                                 <input type="submit" value="Login" class="btn btn-primary">
                             </form>
                             <a href="signup.html">SignUp</a>
@@ -94,9 +98,22 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="cordova.js"></script>
-    
-    
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+    <script>
+    var config = {
+    apiKey: "AIzaSyC798O1WFwkHwDFG4f4AfwUUNyQ-h_IX0s",
+    authDomain: "gametrack-dc695.firebaseapp.com",
+    databaseURL: "https://gametrack-dc695.firebaseio.com",
+    projectId: "gametrack-dc695",
+    storageBucket: "gametrack-dc695.appspot.com",
+    messagingSenderId: "1095071838360"
+    };
+    firebase.initializeApp(config);
+    </script>
+	<script type="text/javascript" src="cordova.js"></script>   
     <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     

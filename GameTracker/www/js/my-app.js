@@ -30,3 +30,49 @@ myApp.onPageInit('about', function (page) {
 
 // Option 2. Using live 'pageInit' event handlers for each page
 
+//Initialize Fire Base
+
+
+
+
+
+
+function getVal(id){
+    return document.getElementById(id).value;
+}
+
+//document.getElementById('signUpForm').addEventListener('submit',signForm);
+
+function signForm(){
+  
+  var email = getVal('email');
+  var pass = getVal('pass');
+  console.log("HELLO People");
+
+  firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
+    // Handle Errors here.
+    var errorCode = error.code;
+    
+    var errorMessage = error.message;
+    console.log(errorMessage);
+  })
+
+  
+} 
+
+document.getElementById('login').addEventListener('submit', signForm);
+
+function loginForm(){
+  
+  var email = getVal('email');
+  var password = getVal('pass');
+
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
+
+}
+
