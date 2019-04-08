@@ -41,35 +41,37 @@ var config = {
   messagingSenderId: "1095071838360"
 };
 
+firebase.initializeApp(config);
 
 
 
-
-function getval(id){
+function getVal(id){
     return document.getElementById(id).value;
 }
 
-document.getElementById('signup').addEventListener('submit',signForm);
+//document.getElementById('signUpForm').addEventListener('submit',signForm);
 
 function signForm(){
-  firebase.initializeApp(config);
+  
   var email = getVal('email');
-  var pass = getVal('confirm');
+  var pass = getVal('pass');
+  console.log("HELLO People");
 
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
     // Handle Errors here.
     var errorCode = error.code;
+    
     var errorMessage = error.message;
-    // ...
+    console.log(errorMessage);
   })
 
   
-}
+} 
 
-document.getElementById('login').addEventListener('submit', loginForm);
+document.getElementById('login').addEventListener('submit', signForm);
 
 function loginForm(){
-  firebase.initializeApp(config);
+  
   var email = getVal('email');
   var password = getVal('pass');
 
