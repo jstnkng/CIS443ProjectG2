@@ -31,10 +31,21 @@ myApp.onPageInit('about', function (page) {
 // Option 2. Using live 'pageInit' event handlers for each page
 
 //Initialize Fire Base
+
 var config = {
   apiKey: "AIzaSyC798O1WFwkHwDFG4f4AfwUUNyQ-h_IX0s",
   authDomain: "gametrack-dc695.firebaseapp.com",
   databaseURL: "https://gametrack-dc695.firebaseio.com",
+  projectId: "gametrack-dc695",
   storageBucket: "gametrack-dc695.appspot.com",
+  messagingSenderId: "1095071838360"
 };
 firebase.initializeApp(config);
+
+firebase.auth().signInWithCustomToken(token).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+  console.log("You are signed in" + token)
+});
