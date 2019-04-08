@@ -10,7 +10,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta http-equiv="Content-Security-Policy" content="default-src gap://ready file://* *; style-src 'self' http://* https://* 'unsafe-inline'; script-src 'self' http://* https://* 'unsafe-inline' 'unsafe-eval'">
 
     <!-- Required meta tags-->
     <meta charset="utf-8">
@@ -73,7 +73,7 @@
                         <div class="content-block" style="text-align: center">
                             <br/>
                             <img src="header_logo_black.png" style="margin-bottom:5px;">
-                            <form class=text-center style="width:80%; margin-left: auto; margin-right: auto;">
+                            <form id ="login" class=text-center style="width:80%; margin-left: auto; margin-right: auto;">
                                         <input class= "form-control" style="margin-bottom:5px;" type="text" name="username" placeholder="Username">
                                         <input class= "form-control" type="text" name="password" placeholder="Password">
                                         <br/>

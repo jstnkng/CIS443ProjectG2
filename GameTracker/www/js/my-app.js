@@ -25,8 +25,8 @@ myApp.onPageInit('about', function (page) {
 
 })
 
-
 // Option 2. Using one 'pageInit' event handler for all pages:
 
 
 // Option 2. Using live 'pageInit' event handlers for each page
+
