@@ -390,6 +390,11 @@ h6, .h6 {
   font-size: 1rem;
 }
 
+.padding-0{
+  padding-right:0;
+  padding-left:0;
+}
+
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
@@ -2375,6 +2380,8 @@ textarea.form-control {
   }
 }
 
+
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -4155,6 +4162,7 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  
 }
 
 .navbar > .container,
@@ -4202,6 +4210,7 @@ input[type="button"].btn-block {
   position: static;
   float: none;
 }
+
 
 .navbar-text {
   display: inline-block;

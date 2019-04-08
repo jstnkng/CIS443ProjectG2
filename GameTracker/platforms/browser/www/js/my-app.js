@@ -29,3 +29,4 @@ myApp.onPageInit('about', function (page) {
 
 
 // Option 2. Using live 'pageInit' event handlers for each page
+
