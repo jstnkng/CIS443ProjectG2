@@ -41,38 +41,99 @@ function getVal(id){
     return document.getElementById(id).value;
 }
 
-//document.getElementById('signUpForm').addEventListener('submit',signForm);
+document.getElementById('btnLogin').addEventListener('click',loginForm);
+document.getElementById('btnSignup').addEventListener('click', signForm);
+document.getElementById('btnSignout').addEventListener('click', signOut);
 
 function signForm(){
   
-  var email = getVal('email');
-  var pass = getVal('pass');
-  console.log("HELLO People");
+  var email = getVal('emailNew');
+  var pass = getVal('confirm');
+  var pass1 = getVal('passwordSignIn');
 
-  firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
-    // Handle Errors here.
-    var errorCode = error.code;
-    
-    var errorMessage = error.message;
-    console.log(errorMessage);
-  })
+  if (pass == pass1){
 
-  
+    firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
+      // Handle Errors here.
+      var errorCode = error.code;
+      
+      var errorMessage = error.message;
+
+      window.alert(errorMessage)
+      
+    })  
+  }
+  else{
+    window.alert("Passwords do not match")
+  }
 } 
 
-document.getElementById('login').addEventListener('submit', signForm);
+
 
 function loginForm(){
   
   var email = getVal('email');
   var password = getVal('pass');
-
+  
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
+    window.alert(errorMessage)
     // ...
   });
 
 }
+
+function signOut(){
+  firebase.auth().signOut().then(function() {
+    LogUserOut();
+  }).catch(function(error) {
+    // An error happened.
+  });
+}
+
+function LogUserOut(){
+  document.getElementById("signupform").style.display = "block";
+  document.getElementById("login").style.display = "block";
+  document.getElementById("logout").style.display = "none";
+
+  window.alert("Signed Out");
+}
+
+function LogUserIn(){
+  document.getElementById("signupform").style.display = "none";
+  document.getElementById("login").style.display = "none";
+  document.getElementById("logout").style.display = "block";
+
+  window.alert("Welcome " + user.email);
+
+}
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+          // User is signed in.
+  if (!firebase.auth().currentUser.emailVerified){
+    user.sendEmailVerification().then(function() {
+      // Email sent.
+      window.alert("Verification email sent");
+      firebase.auth().signOut().then(function() {
+          //Signed out
+      }).catch(function(error) {
+        // An error happened.
+      });
+    }).catch(function(error) {
+      window.alert("Please verify your email");
+    });
+  }
+  else{
+    LogUserIn();
+  }
+
+    
+  } else {
+    // No user is signed in.
+
+  }
+});
 
