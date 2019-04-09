@@ -42,12 +42,12 @@ function getVal(id){
 }
 
 //document.getElementById('signUpForm').addEventListener('submit',signForm);
-document.getElementById('myBtn').addEventListener('click', signForm);
+document.getElementById('btnSignup').addEventListener('click', signForm);
 
 function signForm(){
   
-  var email = getVal('email');
-  var pass = getVal('pass');
+  var email = getVal('emailNew');
+  var pass = getVal('confirm');
   
 
   firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
