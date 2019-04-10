@@ -30,63 +30,86 @@ myApp.onPageInit('about', function (page) {
 
 // Option 2. Using live 'pageInit' event handlers for each page
 
+//Initialize Fire Base
+
+
+
+
+
+
 function getVal(id){
-  return document.getElementById(id).value;
-}
-function clearVal(id){
-  document.getElementById(id).value = '';
+    return document.getElementById(id).value;
 }
 
+document.getElementById('btnLogin').addEventListener('click',loginForm);
 document.getElementById('btnSignup').addEventListener('click', signForm);
+document.getElementById('btnSignout').addEventListener('click', signOut);
 
 function signForm(){
   
   var email = getVal('emailNew');
   var pass = getVal('confirm');
-  var didItWork = true;
+  var pass1 = getVal('passwordSignIn');
 
-  firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
-    // Handle Errors here.
-    var errorCode = error.code;
-    didItWork = false;
-    var errorMessage = error.message;
-    console.log(errorMessage);
-  })
- 
-  if(didItWork){
-    clearVal('emailNew');
-    clearVal('passwordSignIn');
-    clearVal('confirm');
+  if (pass == pass1){
+
+    firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
+      // Handle Errors here.
+      var errorCode = error.code;
+      
+      var errorMessage = error.message;
+
+      window.alert(errorMessage)
+      
+    })  
   }
   else{
-    window.alert('Account Creation was not successful');
+    window.alert("Passwords do not match")
   }
-  
 } 
 
-document.getElementById('btnLogin').addEventListener('click', loginForm);
+
 
 function loginForm(){
   
   var email = getVal('email');
   var password = getVal('pass');
-
+  
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
+    window.alert(errorMessage)
     // ...
   });
 
-}
-document.getElementById('btnSignout').addEventListener('click', signout);
+  window.location.href = 'MainPage.html';
 
-function signout(){
+}
+
+function signOut(){
   firebase.auth().signOut().then(function() {
-    // Sign-out successful.
+    LogUserOut();
   }).catch(function(error) {
     // An error happened.
   });
+}
+
+function LogUserOut(){
+  document.getElementById("signupform").style.display = "block";
+  document.getElementById("login").style.display = "block";
+  document.getElementById("logout").style.display = "none";
+
+  window.alert("Signed Out");
+}
+
+function LogUserIn(){
+  document.getElementById("signupform").style.display = "none";
+  document.getElementById("login").style.display = "none";
+  document.getElementById("logout").style.display = "block";
+
+  window.alert("Welcome " + user.email);
+
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -109,6 +132,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     LogUserIn();
   }
 
-function getUser(){
-  return firebase.auth().currentUser();
-}
+    
+  } else {
+    // No user is signed in.
+
+  }
+});
