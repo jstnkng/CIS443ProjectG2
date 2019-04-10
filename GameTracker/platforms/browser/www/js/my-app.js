@@ -74,7 +74,7 @@ function loginForm(){
     // ...
   });
 
-  window.location.href = 'MainPage.html';
+  
 
 }
 
@@ -87,18 +87,15 @@ function signOut(){
 }
 
 function LogUserOut(){
-  document.getElementById("signupform").style.display = "block";
-  document.getElementById("login").style.display = "block";
-  document.getElementById("logout").style.display = "none";
-
   window.alert("Signed Out");
+  window.location.href = 'index.html';
 }
 
 function LogUserIn(){
   document.getElementById("signupform").style.display = "none";
   document.getElementById("login").style.display = "none";
   document.getElementById("logout").style.display = "block";
-
+  window.location.href = 'MainPage.html';
   window.alert("Welcome " + currentUser.email);
 
 }
