@@ -79,7 +79,7 @@ function loginForm(){
   });
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      window.location.href = '/MainPage.html';
+      window.location.href = 'MainPage.html';
     } else {
       // No user is signed in.
     }
