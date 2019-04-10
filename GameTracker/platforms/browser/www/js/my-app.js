@@ -86,6 +86,15 @@ function loginForm(){
   });
 
 }
+document.getElementById('btnSignout').addEventListener('click', signout);
+
+function signout(){
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }).catch(function(error) {
+    // An error happened.
+  });
+}
 
 function getUser(){
   return firebase.auth().currentUser();
