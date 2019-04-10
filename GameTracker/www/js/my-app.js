@@ -25,16 +25,7 @@ myApp.onPageInit('about', function (page) {
 
 })
 
-// Option 2. Using one 'pageInit' event handler for all pages:
-
-
-// Option 2. Using live 'pageInit' event handlers for each page
-
-//Initialize Fire Base
-
-
-
-
+var currentUser;
 
 
 function getVal(id){
@@ -108,11 +99,12 @@ function LogUserIn(){
   document.getElementById("login").style.display = "none";
   document.getElementById("logout").style.display = "block";
 
-  window.alert("Welcome " + user.email);
+  window.alert("Welcome " + currentUser.email);
 
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
+  currentUser = user;
   if (user) {
           // User is signed in.
   if (!firebase.auth().currentUser.emailVerified){
@@ -130,9 +122,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
   else{
     LogUserIn();
-  }
-
-    
+  }   
   } else {
     // No user is signed in.
 
