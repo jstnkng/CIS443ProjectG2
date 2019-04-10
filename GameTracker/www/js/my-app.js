@@ -77,13 +77,6 @@ function loginForm(){
     var errorMessage = error.message;
     // ...
   });
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      window.location.href = 'MainPage.html';
-    } else {
-      // No user is signed in.
-    }
-  });
 
 }
 document.getElementById('btnSignout').addEventListener('click', signout);
@@ -95,6 +88,26 @@ function signout(){
     // An error happened.
   });
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+          // User is signed in.
+  if (!firebase.auth().currentUser.emailVerified){
+    user.sendEmailVerification().then(function() {
+      // Email sent.
+      window.alert("Verification email sent");
+      firebase.auth().signOut().then(function() {
+          //Signed out
+      }).catch(function(error) {
+        // An error happened.
+      });
+    }).catch(function(error) {
+      window.alert("Please verify your email");
+    });
+  }
+  else{
+    LogUserIn();
+  }
 
 function getUser(){
   return firebase.auth().currentUser();
