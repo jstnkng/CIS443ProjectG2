@@ -27,6 +27,18 @@ myApp.onPageInit('about', function (page) {
 
 var currentUser;
 
+function AddGamesPage(){
+  window.location.href = 'AddGamesPage.html';
+}
+function ProfilePage(){
+  window.location.href = 'ProfilePage.html';
+}
+function AboutPage(){
+  window.location.href = 'about.html';
+}
+function MainPage(){
+  window.location.href = 'MainPage.html';
+}
 
 function getVal(id){
     return document.getElementById(id).value;
@@ -35,6 +47,10 @@ function getVal(id){
 document.getElementById('btnLogin').addEventListener('click',loginForm);
 document.getElementById('btnSignup').addEventListener('click', signForm);
 document.getElementById('btnSignout').addEventListener('click', signOut);
+document.getElementById('btnProfilePage').addEventListener('click', ProfilePage);
+document.getElementById('btnAddGamesPage').addEventListener('click', AddGamesPage);
+document.getElementById('btnAboutPage').addEventListener('click', AboutPage);
+document.getElementById('btnMainPage').addEventListener('click', MainPage)
 
 function signForm(){
   
