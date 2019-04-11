@@ -32,6 +32,12 @@
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     
+    <script>
+            window.onload = function() {
+            Start();
+            }
+    </script>  
+    
 </head>
 
 <body style="background-color:powderblue;">
@@ -84,6 +90,34 @@
                     <!-- Scrollable page content -->
                     <div class="page-content" style="background-color:#000000">
                         <div class="content-block" style="text-align: center">
+                                <div id="UserName"class="h4" style="text-decoration: underline;">User's Profile</div>
+                                <br/>
+                                <div class="container" style="background-color:#353942; border-style: groove; border-color: white"> 
+                                        <div class="row">
+                                          <div class="col">
+                                                <div class='h6'style="text-decoration: underline; color: white;">Game Played The Most:</div>
+                                          </div>
+                                          <div class="w-100"></div>
+                                          <div class="col">
+                                                <div id='GameMostPlayed' style="color:white">World Of Warcraft</div>
+                                          </div>
+                                        </div>
+                                </div>
+                                <br/>
+                                <div class="container" style="background-color:#353942; border-style: groove; border-color: white"> 
+                                        <div class="row">
+                                          <div class="col">
+                                                <div class='h6'style="text-decoration: underline; color: white;">Game Played The Least:</div>
+                                          </div>
+                                          <div class="w-100"></div>
+                                          <div class="col">
+                                                <div id='GameLeastPlayed' style="color:white">Minecraft</div>
+                                          </div>
+                                        </div>
+                                </div>
+                                <br/>
+                                <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                         </div>
                     </div>
                 </div>
@@ -116,6 +150,7 @@
     
             firebase.initializeApp(config);
         </script>
+        <script type="text/javascript" src="js/chart.js"></script>
 </body>
 
 </html>
