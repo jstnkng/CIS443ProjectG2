@@ -50,7 +50,9 @@ document.getElementById('btnSignout').addEventListener('click', signOut);
 document.getElementById('btnProfilePage').addEventListener('click', ProfilePage);
 document.getElementById('btnAddGamesPage').addEventListener('click', AddGamesPage);
 document.getElementById('btnAboutPage').addEventListener('click', AboutPage);
-document.getElementById('btnMainPage').addEventListener('click', MainPage)
+document.getElementById('btnMainPage').addEventListener('click', MainPage);
+document.getElementById('btnAdd').addEventListener('click', addGames);
+
 
 function signForm(){
   
@@ -116,6 +118,30 @@ function LogUserIn(){
 
 }
 
+var mesRef = firebase.database().ref('games');
+function addGames(){
+  var game = getVal('gametitle');
+  var hrs = getVal('hours');
+  var email = currentUser.email;
+  saveMessage(game, hrs, email);
+}
+
+
+function saveMessage(game, hours, email){
+  var newMesRef = mesRef.push();
+  newMesRef.set({
+    game:game,
+    hours:hours,
+    email:email
+  });
+  window.alert(game + " Added");
+  document.getElementById("gametitle").value = "";
+  document.getElementById("hours").value = "";
+  
+}
+
+
+
 firebase.auth().onAuthStateChanged(function(user) {
   currentUser = user;
   if (user) {
@@ -141,3 +167,5 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   }
 });
+
+
