@@ -142,25 +142,7 @@ function saveMessage(game, hours, email){
   document.getElementById("hours").value = "";
   
 }
-/*function gamesRef() {
-var GamesRef = firebase.database().ref('games');
-GamesRef.on('value', function(snapshot) {
-  snapshot.forEach(function(childSnapshot) {
-    var childData = childSnapshot.val();
-    var childEmail = childData["email"];
-    var childGame = childData["game"];
-    var childHours = childData["hours"];
-    displayGames(childEmail, childGame, childHours);
-  });
-});
-}
 
-function displayGames(email, game, hours) {
-  if (email == currentUser.email) {
-    window.alert("email: " + email + " Game: " + game + " hours: " + hours);
-  }
-}
-*/
 firebase.auth().onAuthStateChanged(function(user) {
   currentUser = user;
   if (user) {
@@ -189,6 +171,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 window.onload = function(){
   addAllGames();
+  createChart();
 }
 
 //Grabs data from database, then if it relevant to the user it puts into the respective arrays.
@@ -211,6 +194,31 @@ function addAllGames(){
     console.log(hrArray);
   });
 }
+
+function createChart() {
+                                    
+  var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      title: {
+          text: "Desktop Search Engine Market Share - 2016"
+      },
+      data: [{
+          type: "pie",
+          startAngle: 240,
+          yValueFormatString: "##0.00\"%\"",
+          indexLabel: "{label} {y}",
+          dataPoints: [
+              {y: 79.45, label: "Google"},
+              {y: 7.31, label: "Bing"},
+              {y: 7.06, label: "Baidu"},
+              {y: 4.91, label: "Yahoo"},
+              {y: 1.26, label: "Others"}
+          ]
+      }]
+  });
+  chart.render();
+  
+  }
 
 
 
