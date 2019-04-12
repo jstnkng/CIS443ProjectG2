@@ -169,8 +169,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 window.onload = function(){
-  addAllGames();
   createChart();
+  addAllGames();
+  
 }
 
 //Grabs data from database, then if it relevant to the user it puts into the respective arrays.
@@ -219,7 +220,7 @@ function addAllGames(){
 }
 
 function createChart() {
-                                    
+  if (document.getElementById("chartContainer")) {                                
   var chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
       title: {
@@ -240,7 +241,7 @@ function createChart() {
       }]
   });
   chart.render();
-  
+} 
   }
 
 
