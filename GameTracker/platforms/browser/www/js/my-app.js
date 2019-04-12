@@ -242,8 +242,10 @@ function addAllGames(){
             }
           }
           gameArray.push(game);
+          if (chart){
           chart.options.data[0].dataPoints.push({ y: gameHours, label: gameTitle});
           chart.render();
+          }
         }       
         
     });
@@ -261,7 +263,7 @@ function createChart() {
       animationEnabled: true,
       theme: "light2",
       title: {
-          text: "Desktop Search Engine Market Share - 2016"
+          text: "Hours Played By Game"
       },
       axisY: {
         title: "Hours"
