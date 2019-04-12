@@ -275,8 +275,25 @@ function createChart() {
       }]
   });
   chart.render();
-} 
-  }
+  } 
+}
 
+if(document.getElementById('modifyGamesList')){
+  var table = document.getElementById('modifyGamesList')
+  for (var i = 0, row; row = table.rows[i]; i++) {
+    //iterate through rows
+    //rows would be accessed using the "row" variable assigned in the for loop
+    for (var j = 0, col; col = row.cells[j]; j++) {
+      if(j == 2){
+        gameArray[i].hours = col;
+      }
+    }  
+ }
+ changeHours();
+}
+
+function changeHours(){
+  
+}
 
 
