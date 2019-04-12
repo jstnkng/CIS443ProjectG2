@@ -26,6 +26,9 @@ myApp.onPageInit('about', function (page) {
 })
 
 var currentUser;
+var gameArray = [];
+var hrArray = [];
+var ptsArray = 0;
 
 function AddGamesPage(){
   window.location.href = 'AddGamesPage.html';
@@ -140,8 +143,6 @@ function saveMessage(game, hours, email){
   
 }
 
-
-
 firebase.auth().onAuthStateChanged(function(user) {
   currentUser = user;
   if (user) {
@@ -167,5 +168,31 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   }
 });
+
+window.onload = function(){
+  addAllGames();
+}
+
+//Grabs data from database, then if it relevant to the user it puts into the respective arrays.
+function addAllGames(){
+  var gamesRef = firebase.database().ref('games').orderByKey();
+  gameArray.length = 0;
+  hrArray.length = 0;
+  gamesRef.once('value').then(function(snapshot){
+    snapshot.forEach(function (childSnapshot){
+        var email = childSnapshot.child('email').val();
+        var game = childSnapshot.child('game').val();
+        var hrs = childSnapshot.child('hours').val();
+        if(email == currentUser.email){
+          gameArray.push(game);
+          hrArray.push(hrs);
+        }       
+        
+    });
+    console.log(gameArray);
+    console.log(hrArray);
+  });
+}
+
 
 
