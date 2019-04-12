@@ -142,7 +142,7 @@ function saveMessage(game, hours, email){
   document.getElementById("hours").value = "";
   
 }
-function gamesRef() {
+/*function gamesRef() {
 var GamesRef = firebase.database().ref('games');
 GamesRef.on('value', function(snapshot) {
   snapshot.forEach(function(childSnapshot) {
@@ -160,7 +160,7 @@ function displayGames(email, game, hours) {
     window.alert("email: " + email + " Game: " + game + " hours: " + hours);
   }
 }
-
+*/
 firebase.auth().onAuthStateChanged(function(user) {
   currentUser = user;
   if (user) {
