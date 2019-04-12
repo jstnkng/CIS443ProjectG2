@@ -181,37 +181,56 @@ function addAllGames(){
   hrArray.length = 0;
   var totalHours = 0;
   var totalPoints = 0;
+  var counter = 0;
+  var mostHours = 0;
+  var leastHours = 999999;
   gamesRef.once('value').then(function(snapshot){
-    snapshot.forEach(function (childSnapshot){
+    snapshot.forEach(function (childSnapshot){  
         var email = childSnapshot.child('email').val();
-        var game = childSnapshot.child('game').val();
+        var gameTitle = childSnapshot.child('game').val();
         var hrs = childSnapshot.child('hours').val();
         if(email == currentUser.email){
+          var game = {id: counter, title: gameTitle, hours: hrs};
+          counter++;
           var gameRow = document.createElement("tr");
           var title = document.createElement("td");
           var hours = document.createElement("td");
           var points = document.createElement("td");
-          title.innerHTML = game;
+          title.innerHTML = game.title;
           title.style="text-align: left;"
           hours.innerHTML = hrs;
           hours.style="text-align: right;"
           var gameHours = parseInt(hrs);
           totalHours += gameHours;
           var gamePoints = 5 + (0.5 * gameHours);
+
+          if (gameHours > mostHours){
+            if (document.getElementById("GameMostPlayed")){
+              document.getElementById("GameMostPlayed").innerHTML = gameTitle;
+              mostHours = gameHours;
+            }
+          }
+
+          if (gameHours < leastHours){
+            if (document.getElementById("GameLeastPlayed")){
+              document.getElementById("GameLeastPlayed").innerHTML = gameTitle;
+              leastHours = gameHours;
+            }
+          }
           totalPoints += gamePoints;
           points.innerHTML = gamePoints;
           points.style="text-align: right;"
           gameRow.appendChild(title);
           gameRow.appendChild(hours);
           gameRow.appendChild(points);
-          document.getElementById("gamesList").appendChild(gameRow);
+          if (document.getElementById("gamesList")){
+            document.getElementById("gamesList").appendChild(gameRow);
+          }
           gameArray.push(game);
-          hrArray.push(hrs);
         }       
         
     });
 
-    
     document.getElementById("totalHours").innerHTML = totalHours;   
     document.getElementById("totalPoints").innerHTML = totalPoints;
     console.log(gameArray);
