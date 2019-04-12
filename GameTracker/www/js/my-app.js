@@ -112,8 +112,10 @@ function LogUserOut(){
 }
 
 function LogUserIn(){
-  document.getElementById("signupform").style.display = "none";
-  document.getElementById("login").style.display = "none";
+  //if (document.getElementById("signupform"))
+    document.getElementById("signupform").style.display = "none";
+  //if (document.getElementById("login"))
+    document.getElementById("login").style.display = "none";
   document.getElementById("logout").style.display = "block";
   window.location.href = 'MainPage.html';
   window.alert("Welcome " + currentUser.email);
@@ -256,8 +258,10 @@ function addAllGames(){
         
     });
 
-    document.getElementById("totalHours").innerHTML = totalHours;   
-    document.getElementById("totalPoints").innerHTML = totalPoints;
+    if (document.getElementById("totalHours"))
+      document.getElementById("totalHours").innerHTML = totalHours; 
+    if (document.getElementById("totalPoints"))  
+      document.getElementById("totalPoints").innerHTML = totalPoints;
     console.log(gameArray);
     console.log(hrArray);
   });
@@ -292,13 +296,15 @@ function changeHours(){
   if(document.getElementById('modifyGamesList')){
     var myTable = document.getElementById('modifyGamesList');
     var tableRows = myTable.rows.length;
-    for (var i = 1; i <= tableRows; i++) {
-      var upHours = myTable.rows[i].cells[1].innerText;
-      //gameArray[i - 1].hours = table;
+    for (var i = 0; i < tableRows; i++) {
+      var gameRow = myTable.rows[i];
+      var gameHoursValue = gameRow.childNodes[1].value;
+      var gameHours = parseInt(gameHoursValue);
+      gameArray[i].hours = gameHours;
     }
   }
   gameArray.forEach(function(game){
-    var gamesRef = firebase.database()
+    var gamesRef = firebase.database();
     gamesRef.ref("games/" + game.key).update({hours: game.hours});
     console.log(game.hours);
   })
