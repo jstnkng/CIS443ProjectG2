@@ -168,12 +168,12 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 var chart;
+
 window.onload = function(){
   createChart();
-  addAllGames();
-  
+  addAllGames();  
 }
-
+ 
 //Grabs data from database, then if it relevant to the user it puts into the respective arrays.
 function addAllGames(){
   var gamesRef = firebase.database().ref('games').orderByKey();
@@ -190,6 +190,12 @@ function addAllGames(){
         var gameTitle = childSnapshot.child('game').val();
         var hrs = childSnapshot.child('hours').val();
         if(email == currentUser.email){
+          if (document.getElementById("WelcomeHeader")){
+          document.getElementById("WelcomeHeader").innerHTML = "Welcome " + email;
+          }
+          if (document.getElementById("UserName")){
+            document.getElementById("UserName").innerHTML = email+"'s Profile";
+            }
           var game = {key: childSnapshot.key, title: gameTitle, hours: hrs};
           counter++;
           var gameRow = document.createElement("tr");
