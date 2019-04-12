@@ -167,7 +167,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   }
 });
-
+var chart;
 window.onload = function(){
   createChart();
   addAllGames();
@@ -227,6 +227,8 @@ function addAllGames(){
             document.getElementById("gamesList").appendChild(gameRow);
           }
           gameArray.push(game);
+          chart.options.data[0].dataPoints.push({ y: gameHours, label: gameTitle});
+          chart.render();
         }       
         
     });
@@ -240,23 +242,18 @@ function addAllGames(){
 
 function createChart() {
   if (document.getElementById("chartContainer")) {                                
-  var chart = new CanvasJS.Chart("chartContainer", {
+  chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
+      theme: "light2",
       title: {
           text: "Desktop Search Engine Market Share - 2016"
       },
+      axisY: {
+        title: "Hours"
+      },
       data: [{
-          type: "pie",
-          startAngle: 240,
-          yValueFormatString: "##0.00\"%\"",
-          indexLabel: "{label} {y}",
-          dataPoints: [
-              {y: 79.45, label: "Google"},
-              {y: 7.31, label: "Bing"},
-              {y: 7.06, label: "Baidu"},
-              {y: 4.91, label: "Yahoo"},
-              {y: 1.26, label: "Others"}
-          ]
+          type: "column",
+          dataPoints: []
       }]
   });
   chart.render();
