@@ -139,8 +139,24 @@ function saveMessage(game, hours, email){
   document.getElementById("hours").value = "";
   
 }
+function gamesRef() {
+var GamesRef = firebase.database().ref('games');
+GamesRef.on('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childData = childSnapshot.val();
+    var childEmail = childData["email"];
+    var childGame = childData["game"];
+    var childHours = childData["hours"];
+    displayGames(childEmail, childGame, childHours);
+  });
+});
+}
 
-
+function displayGames(email, game, hours) {
+  if (email == currentUser.email) {
+    window.alert("email: " + email + " Game: " + game + " hours: " + hours);
+  }
+}
 
 firebase.auth().onAuthStateChanged(function(user) {
   currentUser = user;
