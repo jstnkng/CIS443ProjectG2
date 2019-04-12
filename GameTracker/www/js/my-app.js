@@ -190,7 +190,7 @@ function addAllGames(){
         var gameTitle = childSnapshot.child('game').val();
         var hrs = childSnapshot.child('hours').val();
         if(email == currentUser.email){
-          var game = {id: counter, title: gameTitle, hours: hrs};
+          var game = {key: childSnapshot.key, title: gameTitle, hours: hrs};
           counter++;
           var gameRow = document.createElement("tr");
           var title = document.createElement("td");
@@ -203,6 +203,30 @@ function addAllGames(){
           var gameHours = parseInt(hrs);
           totalHours += gameHours;
           var gamePoints = 5 + (0.5 * gameHours);
+          totalPoints += gamePoints;
+          points.innerHTML = gamePoints;
+          points.style="text-align: right;"
+          gameRow.appendChild(title);
+          gameRow.appendChild(hours);
+          gameRow.appendChild(points);
+
+          if (document.getElementById("gamesList")){
+            document.getElementById("gamesList").appendChild(gameRow);
+          }
+
+          var modifyGameRow = document.createElement("tr");
+          var modifyTitle = document.createElement("td");
+          var modifyHours = document.createElement("input");
+          modifyTitle.innerHTML = game.title;
+          modifyHours.type = "text";
+          modifyHours.style = "text-align: center";
+          modifyHours.value = game.hours;
+          modifyGameRow.appendChild(modifyTitle);
+          modifyGameRow.appendChild(modifyHours);
+
+          if (document.getElementById("modifyGamesList")){
+            document.getElementById("modifyGamesList").appendChild(modifyGameRow);
+          }
 
           if (gameHours > mostHours){
             if (document.getElementById("GameMostPlayed")){
@@ -216,15 +240,6 @@ function addAllGames(){
               document.getElementById("GameLeastPlayed").innerHTML = gameTitle;
               leastHours = gameHours;
             }
-          }
-          totalPoints += gamePoints;
-          points.innerHTML = gamePoints;
-          points.style="text-align: right;"
-          gameRow.appendChild(title);
-          gameRow.appendChild(hours);
-          gameRow.appendChild(points);
-          if (document.getElementById("gamesList")){
-            document.getElementById("gamesList").appendChild(gameRow);
           }
           gameArray.push(game);
         }       
