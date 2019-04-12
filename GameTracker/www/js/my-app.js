@@ -277,22 +277,25 @@ function createChart() {
   } 
 }
 
-if(document.getElementById('modifyGamesList')){
-  var table = document.getElementById('modifyGamesList')
-  for (var i = 0, row; row = table.rows[i]; i++) {
-    //iterate through rows
-    //rows would be accessed using the "row" variable assigned in the for loop
-    for (var j = 0, col; col = row.cells[j]; j++) {
-      if(j == 2){
-        gameArray[i].hours = col;
-      }
-    }  
- }
- changeHours();
+if(document.getElementById('btnSubmitChanges')){
+  document.getElementById('btnSubmitChanges').addEventListener('click', changeHours);
 }
 
+
 function changeHours(){
-  
+  if(document.getElementById('modifyGamesList')){
+    var myTable = document.getElementById('modifyGamesList');
+    var tableRows = myTable.rows.length;
+    for (var i = 1; i <= tableRows; i++) {
+      var upHours = myTable.rows[i].cells[1].innerText;
+      //gameArray[i - 1].hours = table;
+    }
+  }
+  gameArray.forEach(function(game){
+    var gamesRef = firebase.database()
+    gamesRef.ref("games/" + game.key).update({hours: game.hours});
+    console.log(game.hours);
+  })
 }
 
 
