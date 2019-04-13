@@ -124,16 +124,18 @@ function LogUserIn(){
 
 var mesRef = firebase.database().ref('games');
 function addGames(){
+  var cType = getVal('console');
   var game = getVal('gametitle');
   var hrs = getVal('hours');
   var email = currentUser.email;
-  saveMessage(game, hrs, email);
+  saveMessage(cType, game, hrs, email);
 }
 
 
-function saveMessage(game, hours, email){
+function saveMessage(cType, game, hours, email){
   var newMesRef = mesRef.push();
   newMesRef.set({
+    cType:cType,
     game:game,
     hours:hours,
     email:email
@@ -141,6 +143,7 @@ function saveMessage(game, hours, email){
   window.alert(game + " Added");
   document.getElementById("gametitle").value = "";
   document.getElementById("hours").value = "";
+  document.getElementById("console").value = "";
   
 }
 
