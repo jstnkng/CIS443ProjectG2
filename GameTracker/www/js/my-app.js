@@ -151,11 +151,10 @@ function saveMessage(game, hours, email, cType){
     email:email,
     cType:cType
   });
-  window.alert(game + " Added");
   document.getElementById("gametitle").value = "";
   document.getElementById("hours").value = "";
   document.getElementById("console").value = "";
-  
+  addAllGames();
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -188,6 +187,12 @@ window.onload = function(){
  
 //Grabs data from database, then if it relevant to the user it puts into the respective arrays.
 function addAllGames(){
+  var modifyGamesList = document.getElementById("modifyGamesList");
+  if (modifyGamesList){
+    while (modifyGamesList.firstChild){
+      modifyGamesList.removeChild(modifyGamesList.firstChild);
+    }
+  }
   var gamesRef = firebase.database().ref('games').orderByKey();
   gameArray.length = 0;
   hrArray.length = 0;
