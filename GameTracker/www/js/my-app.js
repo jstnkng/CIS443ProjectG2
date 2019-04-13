@@ -128,7 +128,9 @@ function addGames(){
   var game = getVal('gametitle');
   var hrs = getVal('hours');
   var email = currentUser.email;
-  var cType = getVal('console');
+  var ddlConsoles = document.getElementById('console');
+  if (ddlConsoles)
+    var cType = ddlConsoles.options[ddlConsoles.selectedIndex].text;
   saveMessage(game, hrs, email, cType);
 }
 
@@ -222,11 +224,11 @@ function addAllGames(){
           points.innerHTML = gamePoints;
           points.style="text-align: right;"
           conType.innerHTML = cType;
-          conType.style = "text-align: right;"
+          conType.style = "text-align: center;"
           gameRow.appendChild(title);
+          gameRow.appendChild(conType);
           gameRow.appendChild(hours);
           gameRow.appendChild(points);
-          gameRow.appendChild(conType);
           
 
           if (document.getElementById("gamesList")){
@@ -235,12 +237,15 @@ function addAllGames(){
 
           var modifyGameRow = document.createElement("tr");
           var modifyTitle = document.createElement("td");
+          var modifyConsole = document.createElement("td");
           var modifyHours = document.createElement("input");
           modifyTitle.innerHTML = game.title;
+          modifyConsole.innerHTML = game.consType;
           modifyHours.type = "text";
           modifyHours.style = "text-align: center";
           modifyHours.value = game.hours;
           modifyGameRow.appendChild(modifyTitle);
+          modifyGameRow.appendChild(modifyConsole);
           modifyGameRow.appendChild(modifyHours);
 
           if (document.getElementById("modifyGamesList")){
