@@ -314,7 +314,7 @@ function changeHours(){
     var tableRows = myTable.rows.length;
     for (var i = 0; i < tableRows; i++) {
       var gameRow = myTable.rows[i];
-      var gameHoursValue = gameRow.childNodes[1].value;
+      var gameHoursValue = gameRow.childNodes[2].value;
       var gameHours = parseInt(gameHoursValue);
       gameArray[i].hours = gameHours;
     }
@@ -324,6 +324,8 @@ function changeHours(){
     gamesRef.ref("games/" + game.key).update({hours: game.hours});
     console.log(game.hours);
   })
+
+  window.alert("Saved changes");
 }
 
 
