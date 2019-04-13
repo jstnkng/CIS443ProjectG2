@@ -127,20 +127,23 @@ function addGames(){
   var game = getVal('gametitle');
   var hrs = getVal('hours');
   var email = currentUser.email;
-  saveMessage(game, hrs, email);
+  var cType = getVal('console');
+  saveMessage(game, hrs, email, cType);
 }
 
 
-function saveMessage(game, hours, email){
+function saveMessage(game, hours, email, cType){
   var newMesRef = mesRef.push();
   newMesRef.set({
     game:game,
     hours:hours,
-    email:email
+    email:email,
+    cType:cType
   });
   window.alert(game + " Added");
   document.getElementById("gametitle").value = "";
   document.getElementById("hours").value = "";
+  document.getElementById("console").value = "";
   
 }
 
@@ -191,6 +194,7 @@ function addAllGames(){
         var email = childSnapshot.child('email').val();
         var gameTitle = childSnapshot.child('game').val();
         var hrs = childSnapshot.child('hours').val();
+        var cType = childSnapshot.child('cType').val();
         if(email == currentUser.email){
           if (document.getElementById("WelcomeHeader")){
           document.getElementById("WelcomeHeader").innerHTML = "Welcome " + email;
@@ -198,12 +202,13 @@ function addAllGames(){
           if (document.getElementById("UserName")){
             document.getElementById("UserName").innerHTML = email+"'s Profile";
             }
-          var game = {key: childSnapshot.key, title: gameTitle, hours: hrs};
+          var game = {key: childSnapshot.key, title: gameTitle, hours: hrs, consType: cType};
           counter++;
           var gameRow = document.createElement("tr");
           var title = document.createElement("td");
           var hours = document.createElement("td");
           var points = document.createElement("td");
+          var conType = document.createElement('td');
           title.innerHTML = game.title;
           title.style="text-align: left;"
           hours.innerHTML = hrs;
@@ -214,9 +219,13 @@ function addAllGames(){
           totalPoints += gamePoints;
           points.innerHTML = gamePoints;
           points.style="text-align: right;"
+          conType.innerHTML = cType;
+          conType.style = "text-align: right;"
           gameRow.appendChild(title);
           gameRow.appendChild(hours);
           gameRow.appendChild(points);
+          gameRow.appendChild(conType);
+          
 
           if (document.getElementById("gamesList")){
             document.getElementById("gamesList").appendChild(gameRow);
