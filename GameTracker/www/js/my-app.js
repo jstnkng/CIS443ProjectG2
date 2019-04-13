@@ -174,7 +174,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     user.sendEmailVerification().then(function() {
       // Email sent.
       window.alert("Verification email sent");
-      LogUserOut();
+      signOut();
     }).catch(function(error) {
       window.alert("Please verify your email");
     });
