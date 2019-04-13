@@ -93,14 +93,25 @@ function loginForm(){
     window.alert(errorMessage)
     // ...
   });
+}
 
-  
+if (document.getElementById("btnForgotPassword")){
+  document.getElementById('btnForgotPassword').addEventListener('click', ResetPassword);
+}
 
+function ResetPassword(){
+  var auth = firebase.auth();
+  var emailAddress = document.getElementById("email").value;
+
+auth.sendPasswordResetEmail(emailAddress).then(function() {
+  window.alert("Check your inbox to reset your password!");
+}).catch(function(error) {
+  window.alert(error.message);
+});
 }
 
 function signOut(){
-  firebase.auth().signOut().then(function() {    
-  window.alert("Signed Out");
+  firebase.auth().signOut().then(function() { 
     LogUserOut();
   }).catch(function(error) {
     // An error happened.
@@ -125,8 +136,6 @@ function LogUserIn(){
     document.getElementById("login").style.display = "none";
   document.getElementById("logout").style.display = "block";
   window.location.href = 'MainPage.html';
-  window.alert("Welcome " + currentUser.email);
-
 }
 
 var mesRef = firebase.database().ref('games');
@@ -209,10 +218,13 @@ function addAllGames(){
         var cType = childSnapshot.child('cType').val();
         if(email == currentUser.email){
           if (document.getElementById("WelcomeHeader")){
-          document.getElementById("WelcomeHeader").innerHTML = "Welcome " + email;
+            if (currentUser.displayName)
+              document.getElementById("WelcomeHeader").innerHTML = "Welcome " + currentUser.displayName + "!";
+            else
+              document.getElementById("WelcomeHeader").innerHTML = "Welcome!";
           }
-          if (document.getElementById("UserName")){
-            document.getElementById("UserName").innerHTML = email+"'s Profile";
+          if (document.getElementById("userDisplayName")){
+            document.getElementById("userDisplayName").value = currentUser.displayName;
             }
           var game = {key: childSnapshot.key, title: gameTitle, hours: hrs, consType: cType};
           counter++;
@@ -337,6 +349,51 @@ function changeHours(){
   })
 
   window.alert("Saved changes");
+}
+
+if (document.getElementById("btnUpdateName")){
+  document.getElementById('btnUpdateName').addEventListener('click', updateName);
+}
+
+function updateName(){
+  currentUser.updateProfile({
+    displayName: document.getElementById("userDisplayName").value,
+  }).then(function() {
+    window.alert("Profile update successfully");
+  }).catch(function(error) {
+    // An error happened.
+  });
+}
+
+if (document.getElementById("btnUpdatePassword")){
+  document.getElementById('btnUpdatePassword').addEventListener('click', ReAuthenticateUser);
+}
+
+function ReAuthenticateUser(){
+  var credential = firebase.auth.EmailAuthProvider.credential(
+    currentUser.email,
+    document.getElementById("UserOldPassword").value
+  );
+
+  currentUser.reauthenticateAndRetrieveDataWithCredential(credential).then(function() {
+    updatePassword();
+  }).catch(function(error) {
+   window.alert(error.message);
+  });
+}
+
+function updatePassword(){
+  var newPassword = document.getElementById("UserNewPassword").value;
+    currentUser.updatePassword(newPassword).then(function() {
+      window.alert("Password updated successfully");
+      if (document.getElementById("UserNewPassword"))
+        document.getElementById("UserNewPassword").value = "";
+      if (document.getElementById("UserOldPassword"))
+        document.getElementById("UserOldPassword").value = "";
+      // Update successful.
+    }).catch(function(error) {
+      window.alert(error.message);
+    });
 }
 
 
