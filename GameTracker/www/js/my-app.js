@@ -99,7 +99,8 @@ function loginForm(){
 }
 
 function signOut(){
-  firebase.auth().signOut().then(function() {
+  firebase.auth().signOut().then(function() {    
+  window.alert("Signed Out");
     LogUserOut();
   }).catch(function(error) {
     // An error happened.
@@ -107,8 +108,14 @@ function signOut(){
 }
 
 function LogUserOut(){
-  window.alert("Signed Out");
   window.location.href = 'index.html';
+  if (document.getElementById('emailNew'))
+    document.getElementById('emailNew').value = "";
+  if (document.getElementById('passwordSignIn'))
+    document.getElementById('passwordSignIn').value = "";
+  if (document.getElementById('confirm'))
+    document.getElementById('confirm').value = "";
+
 }
 
 function LogUserIn(){
@@ -159,11 +166,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     user.sendEmailVerification().then(function() {
       // Email sent.
       window.alert("Verification email sent");
-      firebase.auth().signOut().then(function() {
-          //Signed out
-      }).catch(function(error) {
-        // An error happened.
-      });
+      LogUserOut();
     }).catch(function(error) {
       window.alert("Please verify your email");
     });
