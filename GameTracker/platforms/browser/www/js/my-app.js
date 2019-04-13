@@ -250,7 +250,7 @@ function addAllGames(){
           modifyTitle.innerHTML = game.title;
           modifyConsole.innerHTML = game.consType;
           modifyHours.type = "text";
-          modifyHours.style = "text-align: center";
+          modifyHours.style = "text-align: center; width: 75%";
           modifyHours.value = game.hours;
           modifyGameRow.appendChild(modifyTitle);
           modifyGameRow.appendChild(modifyConsole);
