@@ -86,8 +86,14 @@
                     <!-- Scrollable page content -->
                     <div class="page-content" style="background-color:#000000">
                         <div class="content-block" style="text-align: center">
-                                <div id="UserName"class="h4" style="text-decoration: underline;">User's Profile</div>
-                                <div id="UserPoints" class="h2">Total Points: 0</div>
+                                <div id="UserName"class="h4" style="text-decoration: underline;">My Profile</div>
+                                <br>
+                                <form id="profileForm">
+                                        Name: <input id="userDisplayName" type="text" name="pin" maxlength="20" size="20">
+                                        <input id='btnUpdateName' type="button" value="Update" class="btn btn-primary"><br>
+                                        <br>
+                                        <div id="UserPoints">Total Points: 0</div>
+                                </form>
 
                                 <br/>
                                 <div class="container" style="background-color:#353942; border-style: groove; border-color: white"> 
@@ -115,6 +121,16 @@
                                 </div>
                                 <br/>                                
                                 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                                <form id="updatePasswordForm">
+                                        <br>
+                                        Old Password: <input id="UserOldPassword" type="password" maxlength="15" size="15"><br>
+                                        <br>
+                                        New Password: <input id="UserNewPassword" type="password"  maxlength="15" size="15">
+                                        <br>
+                                        <br>
+                                        <input id='btnUpdatePassword' type="button" value="Update" class="btn btn-primary">
+                                        <br>
+                                </form>
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                         </div>
                     </div>
