@@ -21,7 +21,7 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Your app title -->
-    <title>My App</title>
+    <title>Profile</title>
 
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
@@ -44,16 +44,16 @@
     <!-- Left panel with reveal effect-->
     <div class="panel panel-left panel-reveal">
             <div class="content-block">
-                    <input id='btnProfilePage' type="button" value="Profile Page" class="btn btn-primary">
+                    <input id='btnMainPage' type="button" value="Main Page" class="btn btn-primary">
                 <br/>
                 <br/>
-                <input id='btnAddGamesPage' type="button" value="Add Games" class="btn btn-primary">
+                <input id='btnProfilePage' type="button" value="Profile Page" class="btn btn-primary">
                 <br/>
                 <br/>
+                <input id='btnAddGamesPage' type="button" value="Edit Games" class="btn btn-primary">
+                <br/>
+                <br/>        
                 <input id='btnAboutPage' type="button" value="About Page" class="btn btn-primary">
-                <br/>
-                <br/>
-                <input id='btnMainPage' type="button" value="Main Page" class="btn btn-primary">
             </div>
         </div>
         <input id='btnSignout' type="button" value="Sign Out" class="btn btn-primary" style="display:none">
@@ -87,6 +87,8 @@
                     <div class="page-content" style="background-color:#000000">
                         <div class="content-block" style="text-align: center">
                                 <div id="UserName"class="h4" style="text-decoration: underline;">User's Profile</div>
+                                <div id="UserPoints" class="h2">Total Points: 0</div>
+
                                 <br/>
                                 <div class="container" style="background-color:#353942; border-style: groove; border-color: white"> 
                                         <div class="row">
@@ -111,8 +113,7 @@
                                           </div>
                                         </div>
                                 </div>
-                                <br/>
-                                
+                                <br/>                                
                                 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                         </div>

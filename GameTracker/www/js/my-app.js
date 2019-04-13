@@ -279,6 +279,9 @@ function addAllGames(){
 
     if (document.getElementById("totalHours"))
       document.getElementById("totalHours").innerHTML = totalHours; 
+    if (document.getElementById("UserPoints")){
+        document.getElementById("UserPoints").innerHTML = "Total Points: " + totalPoints;
+        }
     if (document.getElementById("totalPoints"))  
       document.getElementById("totalPoints").innerHTML = totalPoints;
     console.log(gameArray);
